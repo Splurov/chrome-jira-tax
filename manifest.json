@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Jira Tax",
+  "description": "",
+  "author": "Mikhail Kalashnik <splurov@gmail.com>",
+  "version": "0.0.1",
+  "content_scripts": [
+    {
+      "matches": ["https://jira.hh.ru/secure/RapidBoard.jspa*"],
+      "run_at": "document_end",
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "https://jira.hh.ru/",
+    "http://tax.dev.pyn.ru/"
+  ]
+}
