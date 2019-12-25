@@ -5,13 +5,12 @@ var injectedKey = '__injected_' + chrome.runtime.id;
 function renderTax(teams) {
     var elements = document.querySelectorAll('.ghx-heading');
     elements.forEach(el => {
-        var teamTitle = el.firstChild.textContent;
-        if (teams[teamTitle]) {
+        var swimlaneTitle = el.firstChild.textContent;
+        var team = teams.find((team) => swimlaneTitle.indexOf(team.name) !== -1);
+        if (team) {
             var taxEl = document.createElement('span');
             taxEl.style = 'display: inline-block; margin-left: 10px;'
-            taxEl.innerHTML = 'Tax: <span style="' + (teams[teamTitle][1] < 27 ? ' font-weight: bold; color: #f00;' : '') + '">' +
-                              teams[teamTitle][1] +
-                              ' %</span>';
+            taxEl.innerHTML = 'Tax: <span style="' + (team.warning_level ? ' font-weight: bold; color: #f00;' : '') + '">' + team.percent_tax + ' %</span>';
             el.appendChild(taxEl);
         }
     });

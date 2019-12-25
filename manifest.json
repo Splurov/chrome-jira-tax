@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "content_scripts": [
     {
-      "matches": ["https://jira.hh.ru/secure/RapidBoard.jspa*"],
+      "matches": ["https://jira.hh.ru/secure/RapidBoard.jspa?rapidView=475*"],
       "run_at": "document_end",
       "js": ["content.js"]
     }
